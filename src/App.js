@@ -1,24 +1,51 @@
-import logo from './logo.svg';
+import { lazy, Suspense } from 'react';
+import { Route, Switch } from 'react-router-dom';
+import Loader from 'react-loader-spinner';
+
 import './App.css';
+import Navbar from './components/Navbar/Navbar';
+
+const HomePageView = lazy(() =>
+  import('./views/HomePageView/HomePageView' /* webpackChunkName: "e-view" */),
+);
+const MoviesPageView = lazy(() =>
+  import(
+    './views/MoviesPageView/MoviesPageView' /* webpackChunkName: "hme-view" */
+  ),
+);
+const MovieDetailsPage = lazy(() =>
+  import(
+    './views/MovieDetailsPage/MovieDetailsPage' /* webpackChunkName: "home-vie" */
+  ),
+);
+const NotFoundView = lazy(() =>
+  import('./views/NotFoundView' /* webpackChunkName: "home-w" */),
+);
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Navbar />
+      <Suspense fallback={<Loader />}>
+        <Switch>
+          <Route path="/" exact>
+            <HomePageView />
+          </Route>
+
+          <Route path="/movies/:movieID">
+            <MovieDetailsPage />
+          </Route>
+
+          <Route path="/movies" exact>
+            <MoviesPageView />
+          </Route>
+
+          <Route>
+            <NotFoundView />
+          </Route>
+        </Switch>
+      </Suspense>
+    </>
   );
 }
 

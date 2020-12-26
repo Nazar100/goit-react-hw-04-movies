@@ -1,0 +1,53 @@
+.film {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: wrap;
+  min-width: 1000px;
+  background: #2980b9; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #ffffff,
+    #6dd5fa,
+    #2980b9
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #ffffff,
+    #6dd5fa,
+    #2980b9
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+.film-sub {
+  width: 500px;
+}
+.film-sub p {
+  font-weight: 700;
+  font-size: 20px;
+}
+.film-sub h2 {
+  font-weight: 700;
+  font-size: 40px;
+}
+ul {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+li {
+  margin-right: 30px;
+}
+.reviews-list {
+  margin-top: 10px;
+  list-style: square;
+}
+.no-r {
+  font-size: 40px;
+  /* margin-left: 400px; */
+  margin: 20px 300px;
+}
