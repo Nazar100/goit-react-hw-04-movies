@@ -1,10 +1,5 @@
 import { useState } from 'react';
-import {
-  useRouteMatch,
-  useHistory,
-  useLocation,
-  Route,
-} from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 
 import { fetchMovieByQuery } from '../../api/api-services';
 import MoviesSubPageView from '../MoviesSubPageView/MoviesSubPageView';

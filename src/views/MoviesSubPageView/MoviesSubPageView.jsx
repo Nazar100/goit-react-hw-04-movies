@@ -1,8 +1,12 @@
 import { Link } from 'react-router-dom';
+import { useLocation, useRouteMatch } from 'react-router-dom';
 
 import '../MoviesPageView/MoviesPageView.css';
 
 export default function MoviesSubPageView({ films }) {
+  const location = useLocation();
+  const { url } = useRouteMatch();
+
   return (
     <ul className="list">
       {films &&
@@ -14,7 +18,14 @@ export default function MoviesSubPageView({ films }) {
                 alt={f.name}
                 width="200"
               />
-              <Link to={`movies/${f.id}`}>{f.name || f.title}</Link>
+              <Link
+                to={{
+                  pathname: `${url}/${f.id}`,
+                  state: { from: location.state ? location.state.from : '/' },
+                }}
+              >
+                {f.name || f.title}
+              </Link>
             </li>
           );
         })}
